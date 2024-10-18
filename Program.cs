@@ -34,8 +34,21 @@ namespace Szamonkeres3
                 if (hőmérséklet[i] > maxhőmérséklet)
                     maxhőmérséklet = hőmérséklet[i];
 
-                if (hőmérséklet[i] > minhőmérséklet)
+                if (hőmérséklet[i] < minhőmérséklet)
                     minhőmérséklet = hőmérséklet[i];
+
+                if (hőmérséklet[i] < 0)
+                    Fagyosnap = true;
+            }
+
+            double átlaghőmérséklet = sum / napok;
+            Console.WriteLine($"A hét átlaghőmérséklete: {átlaghőmérséklet} °C");
+            Console.WriteLine($"A legmelegebb nap: {maxhőmérséklet} °C");
+            Console.WriteLine($"A leghidegebb nap: {minhőmérséklet} °C");
+
+            if (Fagyosnap)
+            {
+                Console.WriteLine("Fagypont alatti nap is volt");
             }
         }
     }
